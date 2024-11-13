@@ -88,7 +88,7 @@ async def predict(propertyData : PropertyData):
         preprocessor = PreprocesseData(new_data)
         prediction = preprocessor.preprocess_data()
         print (prediction)
-        return {"prediction": float(prediction[0])}
+        return {"prediction": f"{float(prediction[0]):.2f} €"}
 
     except ValidationError as e:
          # Custom error handling for validation errors
