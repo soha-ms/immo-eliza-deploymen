@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 import os
 from pydantic import BaseModel, ValidationError
-from predict import PreprocesseData
+from api.predict import PreprocesseData
 from typing import Optional
 from enum import Enum
 
