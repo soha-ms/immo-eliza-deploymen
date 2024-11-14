@@ -15,10 +15,9 @@ PropertyType = Literal["HOUSE", "APARTMENT"]
 BuildingState = Literal["TO_RESTORE", "TO_BE_DONE_UP", "TO_RENOVATE", "JUST_RENOVATED", "GOOD", "AS_NEW"]
 HeatingType = Literal["CARBON", "WOOD", "PELLET", "FUELOIL", "GAS", "ELECTRIC", "SOLAR"]
 Province = Literal[
-    "Brussels", "East Flanders", "Antwerp", "Flemish Brabant", "Hainaut", "Limburg", 
+    "Antwerp", "Brussels", "East Flanders", "Flemish Brabant", "Hainaut", "Limburg", 
     "Liège", "Luxembourg", "Namur", "Walloon Brabant", "West Flanders"
 ]
-EPC = Literal["G", "F", "E", "D", "C", "B", "A", "A+", "A++"]
 
 class PropertyData(BaseModel):  
 
@@ -29,13 +28,13 @@ class PropertyData(BaseModel):
     nbr_bedrooms: int
     terrace_sqm :  Optional[int] = 0
     garden_sqm :  Optional[int] = 0
+    primary_energy_consumption_sqm :  Optional[float] = 220
     property_type : PropertyType
     state_building :  BuildingState  
     heating_type: HeatingType
     province : Province
-    epc: EPC   
-   
 
+   
 
 @app.get("/")
 async def root():
