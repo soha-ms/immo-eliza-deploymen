@@ -24,8 +24,7 @@ class  PreprocesseData:
 
 def preprocess_Categorical_data(input_df):
     #encode province column
-    # 'province_Antwerp'
-    all_provinces = ['province_Brussels', 'province_East Flanders',
+    all_provinces = ['province_Antwerp', 'province_Brussels', 'province_East Flanders',
                     'province_Flemish Brabant', 'province_Hainaut', 
                     'province_Limburg', 'province_Liège','province_Luxembourg', 
                     'province_Namur', 'province_Walloon Brabant', 'province_West Flanders']
@@ -59,11 +58,6 @@ def preprocess_Categorical_data(input_df):
         'GAS': 4, 'ELECTRIC': 5,'SOLAR': 6,
         }
 
-    epc_mapping = {
-            'G' : 0,'F': 1, 'E' : 2,'D' : 3,'C' : 4,
-            'B' : 5, 'A' : 6,'A+' : 7,'A++' : 8,      
-    }
-
 
     if 'property_type' in input_df.columns:
         input_df['property_type'] = input_df['property_type'].map(property_type_mapping).fillna(-1)
@@ -76,8 +70,6 @@ def preprocess_Categorical_data(input_df):
         input_df['heating_type'] = input_df['heating_type'].map(
             energy_mapping).fillna(-1)
 
-    if 'epc' in input_df.columns:
-        input_df['epc'] = input_df['epc'].map(epc_mapping).fillna(-1)
 
     return input_df
 
