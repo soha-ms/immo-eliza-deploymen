@@ -2,59 +2,23 @@ from fastapi import FastAPI, HTTPException
 import os
 from pydantic import BaseModel, ValidationError
 from predict import PreprocesseData
-from typing import Optional
-from enum import Enum
+from typing import Literal, Optional
+
 
 # Set port to the env variable PORT to make it easy to choose the port on the server
 # If the Port env variable is not set, use port 8000
 PORT = os.environ.get("PORT", 8000)
 app = FastAPI(port=PORT)
 
-class PropertyType(str, Enum):
-    house = "HOUSE"
-    apartment = "APARTMENT"
 
-class BuildingState(str, Enum):
-    to_restore = "TO_RESTORE"
-    to_be_done_up = "TO_BE_DONE_UP"
-    to_renovate = "TO_RENOVATE"
-    just_renovated = "JUST_RENOVATED"
-    good = "GOOD"
-    as_new = "AS_NEW"
-
-
-class HeatingType(str, Enum):
-    carbon = "CARBON"
-    wood = "WOOD"
-    pellet = "PELLET"
-    fueloil = "FUELOIL"
-    gas = "GAS"
-    electric = "ELECTRIC"
-    solar = "SOLAR"
-
-class Province(str, Enum):    
-    brussels = "Brussels"
-    antwerp = "Antwerp"
-    eastFlanders = "EastFlanders"
-    flemish = "Flemish Brabant"
-    hainaut = "Hainaut"
-    limburg = "Limburg"
-    liege = "Liège"
-    luxembourg = "Luxembourg"
-    namur = "Namur"
-    walloon = "Walloon Brabant"
-    westFlander = "West Flanders"
-
-class EPC (str, Enum):
-    G = 'G'
-    F = 'F'
-    E = 'E'
-    D ='D'
-    C = 'C'
-    B = 'B'
-    A = 'A'
-    Aplus = 'A+'
-    ADpoblePluse =  'A++'
+PropertyType = Literal["HOUSE", "APARTMENT"]
+BuildingState = Literal["TO_RESTORE", "TO_BE_DONE_UP", "TO_RENOVATE", "JUST_RENOVATED", "GOOD", "AS_NEW"]
+HeatingType = Literal["CARBON", "WOOD", "PELLET", "FUELOIL", "GAS", "ELECTRIC", "SOLAR"]
+Province = Literal[
+    "Brussels", "East Flanders", "Antwerp", "Flemish Brabant", "Hainaut", "Limburg", 
+    "Liège", "Luxembourg", "Namur", "Walloon Brabant", "West Flanders"
+]
+EPC = Literal["G", "F", "E", "D", "C", "B", "A", "A+", "A++"]
 
 class PropertyData(BaseModel):  
 
@@ -71,7 +35,6 @@ class PropertyData(BaseModel):
     province : Province
     epc: EPC   
    
-
 
 
 @app.get("/")
