@@ -8,7 +8,7 @@
 ## 🏢 Description
 This project aims to deploy a machine learning model to predict property prices through an API endpoint. It also includes a streamlit web application for easier interaction with the model. The project is structured into two main parts: 
  - The API for developers 
- -  User-friendly web application for non-technical users. 
+ - User-friendly web application for non-technical users. 
 
 ## Repo structure
 ```
@@ -22,44 +22,59 @@ This project aims to deploy a machine learning model to predict property prices 
 ├── Dockerfile
 ├── README.md
 ├── requirements.txt
-
 ```
 
 ## 🚀 Deployment
 
-The FastAPI backend is deployed on Render, containerized with Docker
-and the Streamlit runs locally through cmd prompt 
+- The FastAPI backend is deployed on Render, containerized with Docker.
+- The Streamlit web page hosted with Streamlit Community Cloud.
+<br>
 
 ## 🛎️ Usage
 
-1. Clone the repository to your local machine.
+- **Local app:**
 
-    https://github.com/soha-ms/immo-eliza-deployment.git
+    - Clone the repository to your local machine.
 
-2. Navigate to the project  directory, install the required dependencies:
-    
-    pip install -r requirements.txt
- 
-3. Navigate to the project streamlit directory and run below command:
-    
-    streamlit run streamlit.py
+        https://github.com/soha-ms/immo-eliza-deployment.git
 
-- Fill in the form with the required property details such as property type, nbr of rooms, etc.
-- Click on the "Predict price" button to submit your request. The predicted property price will be displayed.
-    
-4 . The other way to predict price by using the FastAPI backend which is deployed on render through the below link:
+    - Navigate to the project directory and install the required dependencies:
 
-    https://immo-eliza-deployment-1-6o7p.onrender.com/docs
-  
+        pip install -r requirements.txt
 
+    - Open command prompt on *api* directory and run below command:
 
-```python
+            uvicorn app:app --reload
 
-```
+    - Navigate to the project *streamlit* directory and run below command:      
+
+            streamlit run streamlit.py
+
+- **FastAPI :**
+
+    Open your web browser and try out post predict on [FastAPI app's URL deployed on Render](https://immo-eliza-deployment-1-6o7p.onrender.com/docs).
+
+        - Fill in the json with the required property details.
+        - Click on the "Execute" button to submit your request to see the returnd json prediction. 
+
+- **Streamlit App:**
+
+    Open your web browser and navigate to the [Streamlit app's URL hosted with  Streamlit](https://immo-eliza-deployment-pevp8uygv7w9vdxezzjwbh.streamlit.app/).
+
+        - Fill in the form with the required property details such as property type, nbr of rooms, etc.
+        - Click on the "Predict price" button to submit your request. The predicted property price will be displayed.    
+
 
 ## ⏱️ Timeline
 
 This project took 5 days for completion.
+
+<br>
+
+## 🔧 To be upgraded
+- **Add range values hints for Energy consumption fields**: 
+- **Test Model/others to enhance prediction and add extra fileds such as epc, locality**: 
+<br>
 
 ## 📌 Personal Situation
 This project was done as part of the AI Boocamp at BeCode.org. 
